@@ -27,28 +27,36 @@ All projects will require the following:
 ## Phase 0: Force Selection, Analysis & Plan
 ---------- 
 
-#### Custom Force: NAME OF YOUR FORCE
+#### Custom Force: Magnetic Force
 
 ### Custom Force Formula
 What is the formula for your force? Including descriptions/definitions for the symbols. (You may include a picture of the formula if it is not easily typed.)
 
-YOUR ANSWER HERE
+F = qvB
+
+F = Magnetic force
+q = charge
+v = Velocity of the charge
+B = Magnetic field (constant)
 
 ### Custom Force Breakdown
 - What information that is already present in the `Orb` or `OrbNode` classes does this force use?
-  - YOUR ANSWER HERE
+  - Velocity
 
 - Does this force require any new constants, if so what are they and what values will you try initially?
-  - YOUR ANSWER HERE
+  - It requires a Magnetic field constant and we could try constants that are a bit bigger than getGravity's constant
+  - Charge is also a constant but the sign matters 
 
 - Does this force require any new information to be added to the `Orb` class? If so, what is it and what data type will you use?
-  - YOUR ANSWER HERE
+  - Charge and Magnetic field
+  - Magnetic field is a PVector
+  - Charge is a float
 
 - Does this force interact with other `Orbs`, or is it applied based on the environment?
-  - YOUR ANSWER HERE
+  - Yes, opposites attract. alike repel
 
 - In order to calculate this force, do you need to perform extra intermediary calculations? If so, what?
-  - YOUR ANSWER HERE
+  - No because we are already given a velocity from the orbs class and are assigning the magnetic field as a constant. q would be one of two constants depending on charge.
 
 --- 
 
