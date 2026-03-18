@@ -63,6 +63,8 @@ B = Magnetic field (constant)
 ### Simulation 1: Gravity
 Describe how you will attempt to simulate orbital motion.
 
+YOUR ANSWER HERE
+
 --- 
 
 ### Simulation 2: Spring
