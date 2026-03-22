@@ -91,5 +91,5 @@ The orbs will repel or attract to each other and to the fixed orb depending on i
 ### Simulation 5: Combination
 Describe what your combination simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-YOUR ANSWER HERE
+The orbs will have a positive or negative charge, maybe by color, and as spring forces make the orbs move, their velocities will be used to get the magnetic forces with new interactions based on charge.
 
