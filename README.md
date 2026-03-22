@@ -63,28 +63,28 @@ B = Magnetic field (constant)
 ### Simulation 1: Gravity
 Describe how you will attempt to simulate orbital motion.
 
-YOUR ANSWER HERE
+Use Newton's law to find gravity between two objects and add velocity to them
 
 --- 
 
 ### Simulation 2: Spring
 Describe what your spring simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-YOUR ANSWER HERE
+Create springs between the orbs that can compress and decompress for movement
 
 --- 
 
 ### Simulation 3: Drag
 Describe what your drag simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-YOUR ANSWER HERE
+There will be a drag each orb interacts with that goes in the opposing motion
 
 --- 
 
 ### Simulation 4: Custom force
 Describe what your Custom force simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-YOUR ANSWER HERE
+The orbs will repel or attract to each other and to the fixed orb depending on if they represent a north or south pole
 
 --- 
 
