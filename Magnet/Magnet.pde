@@ -59,6 +59,7 @@ void setup()
   makeOrbs(true);
   //Part 3: create earth to simulate gravity
   earth = new FixedOrb(width/2, 150, 100, 50);
+  earth.charge = 1;
 }//setup
 
 
@@ -129,6 +130,7 @@ void makeOrbs(boolean ordered)
       // earth = new FixedOrb(x, y, s, m);
       // orbs[i] = earth;
       orbs[i] = new FixedOrb(x, y, s, m);
+      orbs[i].charge = 1;
     } else {
       if (ordered) {
         orbs[i] = new Orb(x, y, s, m);

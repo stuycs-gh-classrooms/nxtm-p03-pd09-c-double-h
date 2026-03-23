@@ -146,6 +146,8 @@ class Orb
 
     return direction;
   }//getSpring
+  
+//  PVector getMagnet(Orb other, int charge, int 
 
 
   /**
@@ -211,17 +213,18 @@ class Orb
   {
     color c0;
     if (charge >= 0) {
-      c0 = color(0, 255, 255);
+      c0 = color(255, 0, 0);
     }
     else {
-      c0 = color(255, 0, 0);
+      c0 = color(0, 255, 255);
     }
     color c1 = color(0);
     /*
     YOUR CONCISE EXPLANATION IN COLLOQUIAL ENGLISH
      OF WHAT THIS PROCESSING BUILT-IN DOES...
      */
-    c = lerpColor(c0, c1, (mass-MIN_SIZE)/(MAX_MASS-MIN_SIZE));
+    c = c0;
+    //lerpColor(c0, c1, (mass-MIN_SIZE)/(MAX_MASS-MIN_SIZE));
   }//setColor
 
 
