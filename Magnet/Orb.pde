@@ -54,6 +54,32 @@ class Orb
     setColor();
   }
 
+  PVector getMagneticForce(Orb other, float k)
+  {
+    // direction from THIS orb to OTHER
+    PVector r = PVector.sub(other.center, center);
+    float dist = max(r.mag(), MIN_SIZE);
+
+    // normalize r
+    PVector rhat = r.copy();
+    rhat.normalize();
+
+    // use OTHER orb's velocity
+    PVector v = other.velocity;
+
+    // calculate cross product
+    float cross = v.y * rhat.x - v.x * rhat.y;
+
+    // force magnitude
+    float strength = k * charge * other.charge / (dist * dist);
+
+    // build force vector
+    PVector force = rhat.copy();
+    force.mult(cross * strength);
+
+    return force;
+  }
+
 
   /**
    YOUR CONCISE+CLEAR DESCRIPTION OF WHAT THIS METHOD DOES
@@ -146,9 +172,6 @@ class Orb
 
     return direction;
   }//getSpring
-  
-//  PVector getMagnet(Orb other, int charge, int 
-
 
   /**
    YOUR CONCISE+CLEAR DESCRIPTION OF WHAT THIS METHOD DOES
@@ -214,8 +237,7 @@ class Orb
     color c0;
     if (charge >= 0) {
       c0 = color(255, 0, 0);
-    }
-    else {
+    } else {
       c0 = color(0, 255, 255);
     }
     color c1 = color(0);
@@ -238,8 +260,7 @@ class Orb
     String cSymbol;
     if (charge > 0) {
       cSymbol = "+";
-    }
-    else {
+    } else {
       cSymbol = "-";
     }
     text(cSymbol, center.x, center.y);

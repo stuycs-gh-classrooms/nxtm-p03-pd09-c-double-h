@@ -43,6 +43,7 @@ int BOUNCE = 1;
 int GRAVITY = 2;
 int DRAGF = 3;
 int MAGNET = 4;
+float MAG_K = 2.0;
 boolean[] toggles = new boolean[5];
 String[] modes = {"Moving", "Bounce", "Gravity", "Drag", "Magnetic"};
 
@@ -91,7 +92,17 @@ void draw()
       if (toggles[DRAGF]) {
         orbs[o].applyForce(orbs[o].getDragForce(D_COEF));
       }
-    }//gravity, drag
+      if (toggles[MAGNET]) {
+        for (int i = 0; i < orbCount; i++) {
+          for (int j = 0; j < orbCount; j++) {
+            if (i != j) {
+              PVector f = orbs[i].getMagneticForce(orbs[j], MAG_K);
+              orbs[i].applyForce(f);
+            }
+          }
+        }
+      }
+    }//gravity, drag, magnet
 
     for (int o=0; o < orbCount; o++) {
       orbs[o].move(toggles[BOUNCE]);
@@ -208,8 +219,7 @@ void addOrb()
   if (orbCount < orbs.length) {
     orbs[orbCount] = new Orb();
     orbCount++;
-  }
-  else {
+  } else {
     Orb[] newOrbs = new Orb[orbs.length + 1];
     for (int i = 0; i < orbs.length; i++) {
       newOrbs[i] = orbs[i];
