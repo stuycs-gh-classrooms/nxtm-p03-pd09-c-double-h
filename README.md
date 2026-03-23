@@ -37,7 +37,7 @@ F = qvB
 F = Magnetic force
 q = charge
 v = Velocity of the charge
-B = Magnetic field (constant); treated as pointing out of the screen to the turn 3D cross product to 2D on processing
+B = Magnetic field (constant); treated as pointing out of the screen to the turn 3D cross product to 2D on processing so the magnetic motion always goes side to side since its perpendicular to magnetic field
 
 ### Custom Force Breakdown
 - What information that is already present in the `Orb` or `OrbNode` classes does this force use?
