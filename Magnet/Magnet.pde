@@ -63,6 +63,7 @@ void setup()
   makeOrbs(true);
   //Part 3: create earth to simulate gravity
   earth = new FixedOrb(width/2, 150, 100, 50);
+  earth.c = color(255, 0, 0);
   earth.charge = 1;
 }//setup
 
@@ -98,17 +99,20 @@ void draw()
       if (toggles[MAGNET]) {
         for (int i = 0; i < orbCount; i++) {
           for (int j = 0; j < orbCount; j++) {
-            PVector test = orbs[i].getMagneticForce(earth, MAG_K);
+           
+           
 
             if (i != j) {
               PVector f = orbs[i].getMagneticForce(orbs[j], MAG_K);
+              PVector earthForce = orbs[i].getMagneticForce(earth, MAG_K);
               orbs[i].applyForce(f);
-              orbs[i].applyForce(test);
+              orbs[i].applyForce(earthForce);
             }
             // prevents orb overlap
             PVector repel = orbs[i].getRepulsion(orbs[j], REP_K);
+            PVector earthRep = orbs[i].getRepulsion(earth, REP_K);
             orbs[i].applyForce(repel);
-            orbs[i].applyForce(test);
+            orbs[i].applyForce(earthRep);
           }
         }
       }

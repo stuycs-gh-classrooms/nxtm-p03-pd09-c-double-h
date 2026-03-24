@@ -1,4 +1,4 @@
-class Orb
+  class Orb
 {
 
   //instance variables
