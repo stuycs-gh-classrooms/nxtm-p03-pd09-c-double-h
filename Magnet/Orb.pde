@@ -78,8 +78,30 @@ class Orb
     force.mult(cross * strength);
 
     return force;
+  }//getmagneticforce
+
+PVector getRepulsion(Orb other, float k)
+{
+  PVector r = PVector.sub(center, other.center);
+  float dist = max(r.mag(), 1);
+
+  float minDist = (bsize/2 + other.bsize/2);
+
+  // only apply if overlapping
+  if (dist < minDist) {
+    r.normalize();
+
+    float overlap = minDist - dist;
+
+    // strong push outward
+    float strength = k * overlap;
+
+    r.mult(strength);
+    return r;
   }
 
+  return new PVector(0, 0);
+}//getrepulsion
 
   /**
    YOUR CONCISE+CLEAR DESCRIPTION OF WHAT THIS METHOD DOES

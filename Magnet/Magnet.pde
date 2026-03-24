@@ -42,8 +42,11 @@ int MOVING = 0;
 int BOUNCE = 1;
 int GRAVITY = 2;
 int DRAGF = 3;
+
 int MAGNET = 4;
-float MAG_K = 5.0;
+float MAG_K = 4.0;
+float REP_K = 1;
+
 boolean[] toggles = new boolean[5];
 String[] modes = {"Moving", "Bounce", "Gravity", "Drag", "Magnetic"};
 
@@ -99,6 +102,9 @@ void draw()
               PVector f = orbs[i].getMagneticForce(orbs[j], MAG_K);
               orbs[i].applyForce(f);
             }
+            // prevents orb overlap
+            PVector repel = orbs[i].getRepulsion(orbs[j], REP_K);
+            orbs[i].applyForce(repel);
           }
         }
       }
