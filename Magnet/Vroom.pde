@@ -9,7 +9,14 @@ class FixedOrb extends Orb
   FixedOrb(float x, float y, float s, float m)
   {
     super(x, y, s, m);
-    c = color(255, 0, 0);
+    if (charge == -1){
+     c = color(0, 255, 255);
+   
+    }
+    
+    else if (charge == 1){
+       c = color(255, 0, 0);
+    }
   }
 
   /**
@@ -21,6 +28,7 @@ class FixedOrb extends Orb
   {
     super();
     c = color(255, 0, 0);
+   
   }
 
   /**

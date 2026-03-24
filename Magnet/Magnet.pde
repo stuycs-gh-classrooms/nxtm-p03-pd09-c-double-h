@@ -98,13 +98,17 @@ void draw()
       if (toggles[MAGNET]) {
         for (int i = 0; i < orbCount; i++) {
           for (int j = 0; j < orbCount; j++) {
+            PVector test = orbs[i].getMagneticForce(earth, MAG_K);
+
             if (i != j) {
               PVector f = orbs[i].getMagneticForce(orbs[j], MAG_K);
               orbs[i].applyForce(f);
+              orbs[i].applyForce(test);
             }
             // prevents orb overlap
             PVector repel = orbs[i].getRepulsion(orbs[j], REP_K);
             orbs[i].applyForce(repel);
+            orbs[i].applyForce(test);
           }
         }
       }
@@ -263,6 +267,15 @@ void keyPressed()
   }
   if (key == 'm') {
     toggles[MAGNET] = !toggles[MAGNET];
+  }
+
+  if (key == 'e') {
+    earth.charge *= -1;
+    if (earth.charge == -1) {
+      earth.c = color(0, 255, 255);
+    } else if (earth.charge == 1) {
+      earth.c = color(255, 0, 0);
+    }
   }
   if (key == '1') {
     makeOrbs(true);
