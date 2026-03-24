@@ -43,7 +43,7 @@ int BOUNCE = 1;
 int GRAVITY = 2;
 int DRAGF = 3;
 int MAGNET = 4;
-float MAG_K = 2.0;
+float MAG_K = 5.0;
 boolean[] toggles = new boolean[5];
 String[] modes = {"Moving", "Bounce", "Gravity", "Drag", "Magnetic"};
 
