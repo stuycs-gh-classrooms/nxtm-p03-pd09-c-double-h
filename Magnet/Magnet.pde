@@ -36,7 +36,7 @@ float G_CONSTANT = 1;
 float D_COEF = 0.1;
 
 int SPRING_LENGTH = 50;
-float  SPRING_K = 0.005;
+float  SPRING_K = 0.002; //lowered spring constant
 
 int MOVING = 0;
 int BOUNCE = 1;
@@ -44,7 +44,7 @@ int GRAVITY = 2;
 int DRAGF = 3;
 
 int MAGNET = 4;
-float MAG_K = 4.0;
+float MAG_K = 3.0;
 float REP_K = 1;
 
 boolean[] toggles = new boolean[5];
@@ -99,29 +99,20 @@ void draw()
       if (toggles[MAGNET]) {
         for (int i = 0; i < orbCount; i++) {
           for (int j = 0; j < orbCount; j++) {
-<<<<<<< HEAD
-=======
-           
-           
->>>>>>> c3c0dc9603851abf97206f05ca90d4abd3aeb5bf
 
             if (i != j) {
               PVector f = orbs[i].getMagneticForce(orbs[j], MAG_K);
               PVector earthForce = orbs[i].getMagneticForce(earth, MAG_K);
               orbs[i].applyForce(f);
-<<<<<<< HEAD
-=======
+
               orbs[i].applyForce(earthForce);
->>>>>>> c3c0dc9603851abf97206f05ca90d4abd3aeb5bf
             }
             // prevents orb overlap
             PVector repel = orbs[i].getRepulsion(orbs[j], REP_K);
             PVector earthRep = orbs[i].getRepulsion(earth, REP_K);
             orbs[i].applyForce(repel);
-<<<<<<< HEAD
-=======
+
             orbs[i].applyForce(earthRep);
->>>>>>> c3c0dc9603851abf97206f05ca90d4abd3aeb5bf
           }
         }
       }

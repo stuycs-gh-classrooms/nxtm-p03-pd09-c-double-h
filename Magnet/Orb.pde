@@ -1,4 +1,4 @@
-  class Orb
+class Orb
 {
 
   //instance variables
@@ -71,7 +71,15 @@
     float cross = v.y * rhat.x - v.x * rhat.y;
 
     // force magnitude
-    float strength = k * charge * other.charge / (dist * dist);
+    float strength = k / (dist * dist);
+
+    //makes magnetic force b/w opposite charges stronger than spring force to 
+    //amphasize magnetic force effect
+    if (charge != other.charge) {
+      strength *= v.mag();
+    }
+
+    strength *= charge * other.charge;
 
     // build force vector
     PVector force = rhat.copy();
@@ -80,28 +88,34 @@
     return force;
   }//getmagneticforce
 
-PVector getRepulsion(Orb other, float k)
-{
-  PVector r = PVector.sub(center, other.center);
-  float dist = max(r.mag(), 1);
+  PVector getRepulsion(Orb other, float k)
+  {
 
-  float minDist = (bsize/2 + other.bsize/2);
+    //ony repel if charges are the same
+    if (charge != other.charge) {
+      return new PVector(0, 0);
+    }
 
-  // only apply if overlapping
-  if (dist < minDist) {
-    r.normalize();
+    PVector r = PVector.sub(center, other.center);
+    float dist = max(r.mag(), 1);
 
-    float overlap = minDist - dist;
+    float minDist = (bsize/2 + other.bsize/2);
 
-    // strong push outward
-    float strength = k * overlap;
+    // only apply if overlapping
+    if (dist < minDist) {
+      r.normalize();
 
-    r.mult(strength);
-    return r;
-  }
+      float overlap = minDist - dist;
 
-  return new PVector(0, 0);
-}//getrepulsion
+      // strong push outward
+      float strength = k * overlap;
+
+      r.mult(strength);
+      return r;
+    }
+
+    return new PVector(0, 0);
+  }//getrepulsion
 
   /**
    YOUR CONCISE+CLEAR DESCRIPTION OF WHAT THIS METHOD DOES
