@@ -294,7 +294,7 @@ class Orb
     circle(center.x, center.y, bsize);
     fill(0);
     String cSymbol;
-    if (charge > 0) {
+    if (charge == 1) {
       cSymbol = "+";
     } else {
       cSymbol = "-";

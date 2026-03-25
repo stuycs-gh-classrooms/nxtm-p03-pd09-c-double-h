@@ -151,12 +151,16 @@ void makeOrbs(boolean ordered)
     int x = SPRING_LENGTH * (i + 1);
     int y = height/2;
     if (i == 0) {
-      fill(#EA899A);
       // earth = new FixedOrb(x, y, s, m);
       // orbs[i] = earth;
       orbs[i] = new FixedOrb(x, y, s, m);
-      orbs[i].charge = 1;
-    } else {
+      if (orbs[i].charge == -1) {
+        orbs[i].c = color(0, 255, 255);
+      } else if (orbs[i].charge == 1) {
+        orbs[i].c = color(255, 0, 0);
+      }
+    }//first fixed orb
+    else {
       if (ordered) {
         orbs[i] = new Orb(x, y, s, m);
       } else {
